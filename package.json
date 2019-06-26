@@ -1,0 +1,19 @@
+{
+  "name": "youtubeaccess",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js",
+    "start": "node main.js"
+  },
+  "author": "akshay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "npm": "^6.9.0",
+    "request": "^2.88.0",
+    "requests": "^0.2.2"
+  },
+  "devDependencies": {},
+  "description": ""
+}
