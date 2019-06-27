@@ -1,15 +1,26 @@
+
+const cors = require('cors');
+const ytdl = require('ytdl-core');
 express = require("express");
-requests = require("request");
+request = require("request");
 
 app = express();
 port = process.env.PORT || 8080;
 
-app.get("/stream", (request, response)=>{
-    var q = request.query.q;
+app.use(cors());
+
+app.get("/stream", (req, res)=>{
+    var q = req.query.q;
 
     console.log("query string :"+q);
 
-    requests.get(q).pipe(response)
+    res.header('Content-Disposition', 'attachment; filename="video.mp4"')
+
+    //request.get(q).pipe(res)
+
+    ytdl(URL, {  
+        format: 'mp4'
+    }).pipe(res);
 })
 
 

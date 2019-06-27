@@ -9,10 +9,12 @@
   "author": "akshay",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "npm": "^6.9.0",
     "request": "^2.88.0",
-    "requests": "^0.2.2"
+    "requests": "^0.2.2",
+    "ytdl-core": "^0.29.2"
   },
   "devDependencies": {},
   "description": ""
