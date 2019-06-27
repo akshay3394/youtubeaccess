@@ -10,9 +10,9 @@ port = process.env.PORT || 8080;
 app.use(cors());
 
 app.get("/stream", (req, res)=>{
-    var q = req.query.q;
+    var URL = req.query.q;
 
-    console.log("query string :"+q);
+    console.log("query string :"+URL);
 
     res.header('Content-Disposition', 'attachment; filename="video.mp4"')
 
