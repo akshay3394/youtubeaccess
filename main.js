@@ -10,7 +10,8 @@ port = process.env.PORT || 8080;
 app.use(cors());
 
 app.get("/stream", (req, res)=>{
-    var URL = req.query.q;
+    
+    var URL = "https://www.youtube.com/watch?"+req.query.q;
 
     console.log("query string :"+URL);
 
