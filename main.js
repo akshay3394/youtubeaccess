@@ -15,6 +15,7 @@ app.get("/stream", (req, res)=>{
     console.log("query string :"+URL);
 
     //res.header('Content-Disposition', 'attachment; filename="video.mp4"')
+    res.header("content-type", "video/mp4");
 
     //request.get(q).pipe(res)
 
