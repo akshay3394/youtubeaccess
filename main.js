@@ -31,7 +31,9 @@ app.get("/stream", (req, res)=>{
         
         console.log("finished downloading file");
 
-        var readStream = fs.createReadStream("file.mp4").pipe(res);
+        var readStream = fs.createReadStream("file.mp4");
+        
+        readStream.pipe(res);
 
         readStream.on("end", ()=>{
             
