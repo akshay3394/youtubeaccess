@@ -22,10 +22,13 @@ app.get("/stream", (req, res)=>{
 
     //request.get(q).pipe(res)
 
-
-    fs.unlink("file.mp4");
-    console.log("file deleted");
-
+    fs.unlinkSync('file.mp4',function(err){
+        if(err)
+            console.log(err);
+        else
+            console.log('file deleted successfully');
+    });  
+    
 
     ytdl(URL, {  
          format: 'mp4'
