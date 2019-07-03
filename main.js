@@ -29,7 +29,7 @@ app.get("/stream", (req, res)=>{
     .on("finish", ()=>{
         fs.createReadStream("file.mp4").pipe(res)
         .on("close", ()=>{
-            fs.unlink("file.mp4");
+            //fs.unlink("file.mp4");
         });
     });
 
