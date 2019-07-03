@@ -22,6 +22,9 @@ app.get("/stream", (req, res)=>{
 
     //request.get(q).pipe(res)
 
+    var file = fs.open("file.mp4");
+    console.log("file path : "+file.path);
+
     ytdl(URL, {  
          format: 'mp4'
     })
