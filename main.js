@@ -29,10 +29,13 @@ app.get("/stream", (req, res)=>{
     .pipe(fs.createWriteStream("file.mp4"))
     .on("finish", ()=>{
         
+        console.log("finished downloading file");
+
         fs.createReadStream("file.mp4").pipe(res)
-        .on("close", ()=>{
+        .on("finish", ()=>{
             
-            fs.unlinkSync('file.mp4',function(err){
+            console.log("deleting file");
+            fs.unlink('file.mp4',function(err){
                 if(err)
                     console.log(err);
                 else
