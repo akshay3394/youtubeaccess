@@ -3,6 +3,7 @@ const cors = require('cors');
 const ytdl = require('ytdl-core');
 express = require("express");
 request = require("request");
+fs = require("fs");
 
 app = express();
 port = process.env.PORT || 8080;
@@ -23,10 +24,23 @@ app.get("/stream", (req, res)=>{
 
     ytdl(URL, {  
          format: 'mp4'
-    }).pipe(res);
+    })
+    .pipe(fs.createWriteStream("file.mp4"))
+    .on("finish", ()=>{
+        fs.createReadStream("file.mp4").pipe(res)
+        .on("close", ()=>{
+            fs.unlink("file.mp4");
+        });
+    });
+
+
 })
 
 
 var server = app.listen(port, ()=>{
-    console.log("server started at port "+port);
+     console.log("server started at port "+port);
 });
+
+console.log("app started!!!");
+
+//module.exports = app;

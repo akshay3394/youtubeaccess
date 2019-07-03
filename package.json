@@ -11,6 +11,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "now": "^15.6.2",
     "npm": "^6.9.0",
     "request": "^2.88.0",
     "requests": "^0.2.2",
