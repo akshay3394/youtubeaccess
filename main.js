@@ -22,8 +22,10 @@ app.get("/stream", (req, res)=>{
 
     //request.get(q).pipe(res)
 
-    var file = fs.open("file.mp4");
-    console.log("file path : "+file.path);
+
+    fs.unlink("file.mp4");
+    console.log("file deleted");
+
 
     ytdl(URL, {  
          format: 'mp4'
@@ -32,7 +34,7 @@ app.get("/stream", (req, res)=>{
     .on("finish", ()=>{
         fs.createReadStream("file.mp4").pipe(res)
         .on("close", ()=>{
-            //fs.unlink("file.mp4");
+            fs.unlink("file.mp4");
         });
     });
 
