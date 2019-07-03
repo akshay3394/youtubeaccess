@@ -31,8 +31,9 @@ app.get("/stream", (req, res)=>{
         
         console.log("finished downloading file");
 
-        fs.createReadStream("file.mp4").pipe(res)
-        .on("finish", ()=>{
+        var readStream = fs.createReadStream("file.mp4").pipe(res);
+
+        readStream.on("end", ()=>{
             
             console.log("deleting file");
             fs.unlink('file.mp4',function(err){
