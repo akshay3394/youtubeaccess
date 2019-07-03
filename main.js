@@ -21,13 +21,6 @@ app.get("/stream", (req, res)=>{
     res.header("content-type", "video/mp4");
 
     //request.get(q).pipe(res)
-
-    fs.unlinkSync('file.mp4',function(err){
-        if(err)
-            console.log(err);
-        else
-            console.log('file deleted successfully');
-    });  
     
 
     ytdl(URL, {  
@@ -35,9 +28,16 @@ app.get("/stream", (req, res)=>{
     })
     .pipe(fs.createWriteStream("file.mp4"))
     .on("finish", ()=>{
+        
         fs.createReadStream("file.mp4").pipe(res)
         .on("close", ()=>{
-            fs.unlink("file.mp4");
+            
+            fs.unlinkSync('file.mp4',function(err){
+                if(err)
+                    console.log(err);
+                else
+                    console.log('file deleted successfully');
+            }); 
         });
     });
 
