@@ -73,7 +73,11 @@ app.get("/jio", (req, res)=>{
 
     //req.header("content-type", "video/mp4")
 
-    request.get(URL).pipe(res)
+    request.get(URL)
+    .on("error",(err)=>{
+        console.log(err)
+    })
+    .pipe(res)
 })
 
 
