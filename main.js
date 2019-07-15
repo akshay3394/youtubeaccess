@@ -67,16 +67,13 @@ app.get("/", (req, res)=>{
 })
 
 
-app.get("/jio", (req, res)=>{
+app.get("/hoststar", (req, res)=>{
 
-    var URL = "https://jiotvweb.cdn.jio.com/jiotv.live.cdn.jio.com/hotstar_isl/sshindi/master_800.m3u8?jct=KalfY6YDLWxYgPjeql1E-A&pxe=1564294443&st=2rABpyTLSDzkoYSlKcWJhg"
+    var URL = "https://www.hotstar.com/"+req.query.q
 
-    //req.header("content-type", "video/mp4")
+    req.header("content-type", "video/mp4")
 
     request.get(URL)
-    .on("error",(err)=>{
-        console.log(err)
-    })
     .pipe(res)
 })
 
